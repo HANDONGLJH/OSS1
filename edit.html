@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 추가</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="my.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container content">
+        <h1 class="my-4">도서 추가</h1>
+        <form id="addForm">
+            <div class="mb-3">
+                <label for="ranking" class="form-label">순위</label>
+                <input type="number" class="form-control" id="ranking" required>
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">도서명</label>
+                <input type="text" class="form-control" id="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">저자</label>
+                <input type="text" class="form-control" id="author" required>
+            </div>
+            <div class="mb-3">
+                <label for="publisher" class="form-label">출판사</label>
+                <input type="text" class="form-control" id="publisher" required>
+            </div>
+            <div class="mb-3">
+                <label for="year" class="form-label">출판년도</label>
+                <input type="number" class="form-control" id="year" min="1900" max="2024" required>
+            </div>
+            <button type="submit" class="btn btn-primary anime-button">확인</button>
+            <button type="button" class="btn btn-secondary anime-button" onclick="location.href='index.html'">취소</button>
+        </form>
+    </div>
+
+    <script src="add.js"></script>
+</body>
+</html>
