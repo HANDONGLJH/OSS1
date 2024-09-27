@@ -36,39 +36,6 @@
         </form>
     </div>
 
-    <script>
-        document.getElementById('addForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const rank = parseInt(document.getElementById('rank').value);
-            const title = document.getElementById('title').value;
-            const author = document.getElementById('author').value;
-            const publisher = document.getElementById('publisher').value;
-            const year = document.getElementById('year').value;
-
-            // 로컬 스토리지에서 기존 도서 목록을 가져옴
-            let books = JSON.parse(localStorage.getItem('books')) || [];
-
-            // 새 도서 추가
-            const newBook = { rank, title, author, publisher, year };
-
-            // 같은 순위를 입력하면 그 순위와 그 아래 순위가 밀리도록 처리
-            books.forEach(book => {
-                if (book.rank >= rank) {
-                    book.rank += 1;  // 동일한 순위 또는 그 아래의 도서 순위를 한 단계 밀림
-                }
-            });
-
-            // 새 도서 추가 후 다시 정렬
-            books.push(newBook);
-            books.sort((a, b) => a.rank - b.rank);
-
-            // 로컬 스토리지에 다시 저장
-            localStorage.setItem('books', JSON.stringify(books));
-
-            alert('새로운 도서가 추가되었습니다!');
-            location.href = 'index.html';
-        });
-    </script>
+    <script src="add.js"></script>
 </body>
 </html>

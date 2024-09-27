@@ -1,46 +1,43 @@
 document.getElementById('addForm').addEventListener('submit', function(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  var ranking = document.getElementById('ranking').value;
-  var title = document.getElementById('title').value;
-  var author = document.getElementById('author').value;
-  var publisher = document.getElementById('publisher').value;
-  var year = document.getElementById('year').value;
+    const rank = parseInt(document.getElementById('rank').value);
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const publisher = document.getElementById('publisher').value;
+    const year = document.getElementById('year').value;
 
-  if (title.length < 2) {
-      alert('도서명은 2글자 이상이어야 합니다.');
-      return;
-  }
+    let books = JSON.parse(localStorage.getItem('books')) || [];
 
-  if (author.length < 2) {
-      alert('저자는 2글자 이상이어야 합니다.');
-      return;
-  }
+    books.forEach(book => {
+        if (book.rank >= rank) {
+            book.rank += 1;
+        }
+    });
 
-  if (publisher.length < 2) {
-      alert('출판사는 2글자 이상이어야 합니다.');
-      return;
-  }
+    const newBook = { rank, title, author, publisher, year };
+    books.push(newBook);
+    books.sort((a, b) => a.rank - b.rank);
 
-  if (year < 1900 || year > 2024) {
-      alert('출판년도를 올바르게 입력해주세요.');
-      return;
-  }
+    localStorage.setItem('books', JSON.stringify(books));
 
-  var book = {
-      ranking: ranking,
-      title: title,
-      author: author,
-      publisher: publisher,
-      year: year
-  };
-
-  var books = JSON.parse(localStorage.getItem('books')) || [];
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-
-  alert('도서가 성공적으로 추가되었습니다!');
-  location.href = 'index.html';
+    alert('새로운 도서가 추가되었습니다!');
+    location.href = 'index.html';
 });
 
-document.querySelector('h1').classList.add('anime-title');
+// 실시간 Validation 체크
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", function() {
+        if (this.id === "title" && this.value.length < 2) {
+            this.setCustomValidity("도서명은 2글자 이상이어야 합니다.");
+        } else if (this.id === "author" && this.value.length < 2) {
+            this.setCustomValidity("저자는 2글자 이상이어야 합니다.");
+        } else if (this.id === "publisher" && this.value.length < 2) {
+            this.setCustomValidity("출판사는 2글자 이상이어야 합니다.");
+        } else if (this.id === "year" && (this.value < 1900 || this.value > 2024)) {
+            this.setCustomValidity("출판년도를 올바르게 입력해주세요.");
+        } else {
+            this.setCustomValidity("");
+        }
+    });
+});
