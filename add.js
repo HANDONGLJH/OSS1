@@ -6,6 +6,7 @@ document.getElementById('addForm').addEventListener('submit', function(event) {
     const author = document.getElementById('author').value;
     const publisher = document.getElementById('publisher').value;
     const year = document.getElementById('year').value;
+    const episode = documnet.getElementById('episode').value;
 
     let books = JSON.parse(localStorage.getItem('books')) || [];
 

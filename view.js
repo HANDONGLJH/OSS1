@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <li><strong>저자:</strong> ${book.author}</li>
             <li><strong>출판사:</strong> ${book.publisher}</li>
             <li><strong>출판년도:</strong> ${book.year}</li>
+            <li><strong>회차:</strong> ${book.episode}</li>
         `;
   }
 });

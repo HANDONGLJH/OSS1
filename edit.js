@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('author').value = book.author;
         document.getElementById('publisher').value = book.publisher;
         document.getElementById('year').value = book.year;
+        document.getElementById('episode').vaule = book.episode;
     }
 });
 
