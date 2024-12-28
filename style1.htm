@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylesheet 1</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fbe9e9; /* Light red background */
+            color: #333; /* Neutral dark text */
+        }
+
+        /* Header Section */
+        header {
+            background-color: #c0392b; /* Dark red */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+            background-color: #e74c3c; /* Bright red */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            background-color: #c0392b; /* Dark red */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #c0392b;
+            border: 2px solid #c0392b;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px;
+            background-color: #fbe9e9; /* Light red */
+        }
+
+        section {
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #f5cac3; /* Soft red */
+            border-radius: 10px;
+        }
+
+        section h2 {
+            color: #c0392b;
+        }
+
+        footer {
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stylesheet 1 Example</h1>
+    </header>
+    <nav>
+        <a href="index.htm">Home</a> <!-- Home 버튼 -->
+        <a href="style2.htm">Stylesheet 2</a>
+        <a href="#">Contact</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Same Page Different Stylesheets</h2>
+            <p>This is a demonstration of Stylesheet 1 with red-themed colors and simple layouts.</p>
+        </section>
+    </main>
+    <footer>
+        <p>Footer content goes here</p>
+    </footer>
+</body>
+</html>
