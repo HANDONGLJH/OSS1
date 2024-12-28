@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List Page</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #27ae60;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 10px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #eef5e8;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic List</h1>
+    <div class="container">
+        <!-- Input Field -->
+        <label for="itemInput">Add an Item:</label>
+        <input type="text" id="itemInput" placeholder="Enter your item here">
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button id="addButton">Add</button>
+            <button id="clearButton">Clear</button>
+        </div>
+
+        <!-- List -->
+        <ul id="itemList">
+            <p class="empty-message" id="emptyMessage">No items added yet.</p>
+        </ul>
+    </div>
+
+    <script>
+        // JavaScript for Dynamic Page
+
+        // Wait for the window to load
+        window.onload = function() {
+            // Get references to elements
+            const addButton = document.getElementById("addButton");
+            const clearButton = document.getElementById("clearButton");
+            const itemInput = document.getElementById("itemInput");
+            const itemList = document.getElementById("itemList");
+            const emptyMessage = document.getElementById("emptyMessage");
+
+            // Function to add an item to the list
+            addButton.onclick = function() {
+                const inputValue = itemInput.value.trim();
+
+                if (inputValue === "") {
+                    alert("Please enter an item.");
+                    return;
+                }
+
+                // Create a new list item
+                const listItem = document.createElement("li");
+                listItem.textContent = inputValue;
+
+                // Add the list item to the list
+                itemList.appendChild(listItem);
+
+                // Clear the input field
+                itemInput.value = "";
+
+                // Hide empty message if it's visible
+                emptyMessage.style.display = "none";
+            };
+
+            // Function to clear all items from the list
+            clearButton.onclick = function() {
+                // Remove all children from the list
+                while (itemList.firstChild) {
+                    itemList.removeChild(itemList.firstChild);
+                }
+
+                // Show the empty message
+                emptyMessage.style.display = "block";
+            };
+        };
+    </script>
+</body>
+</html>
